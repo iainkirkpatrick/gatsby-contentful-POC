@@ -8,6 +8,7 @@ import Container from '../components/Container'
 import PageTitle from '../components/PageTitle'
 
 const Index = ({data}) =>  {
+  console.log('testing NODE_ENV')
 
   const places = data.allContentfulPlace.edges;
 
