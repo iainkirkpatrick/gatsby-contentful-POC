@@ -57,7 +57,6 @@ const Card = (props) => {
         <Img sizes={props.image.sizes} backgroundColor={'#eeeeee'} />
         <Title>{props.title}</Title>
         <Date>{props.date}</Date>
-        <Excerpt dangerouslySetInnerHTML={{ __html: props.excerpt.childMarkdownRemark.excerpt }}/>
       </Link>
     </Post>
   )

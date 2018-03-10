@@ -9,49 +9,43 @@ import PageTitle from '../components/PageTitle'
 
 const Index = ({data}) =>  {
 
-  const posts = data.allContentfulPost.edges;
+  const places = data.allContentfulPlace.edges;
 
   return (
-    <Container>
-      <PageTitle small>
-        <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>, <a href="https://www.contentful.com/" target="_blank">Contentful</a> and <a href="https://www.netlify.com/" target="_blank">Netlify</a> <span>🎉</span>
-      </PageTitle>
-      <CardList>
-        {posts.map(({ node: post })=> (
+    <CardList>
+      {places.map(({ node: place })=> {
+        return (
           <Card
-           key={post.id}
-           slug={post.slug}
-           image={post.heroImage}
-           title={post.title}
-           date={post.publishDate}
-           excerpt={post.body}
+           key={place.id}
+           image={place.bannerImage}
+           name={place.name}
+           excerpt={place.description}
           />
-        ))}
-      </CardList>
-    </Container>
+        )
+      })}
+    </CardList>
   )
 }
 
 export const query = graphql`
   query indexQuery {
-    allContentfulPost(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+    allContentfulPlace(limit: 1000, sort: {fields: [createdAt], order: DESC}) {
       edges {
         node {
-          title
-          id
-          slug
-          publishDate(formatString: "MMMM DD, YYYY")
-          heroImage {
-            title
-            sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_noBase64
+          name
+          bannerImage {
+            sizes {
+              base64
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
             }
           }
-          body {
-            childMarkdownRemark {
-              html
-              excerpt(pruneLength: 80)
-            }
+          description {
+            description
           }
         }
       }
