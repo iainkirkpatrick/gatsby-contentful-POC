@@ -1,2 +1,5 @@
 [context.branch-deploy.environment]
   NODE_ENV = "development"
+
+[context.staging.environment]
+  NODE_ENV = "development"
