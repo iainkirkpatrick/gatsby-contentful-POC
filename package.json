@@ -37,7 +37,8 @@
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "node ./bin/setup.js",
-    "dev": "gatsby develop"
+    "dev": "gatsby develop",
+    "heroku-postbuild": "gatsby build"
   },
   "devDependencies": {
     "prettier": "^1.11.1"
